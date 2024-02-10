@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url(./asset/pxfuel.jpg);
+    /* background-color: #e6b2c6; */
+    /* color: #352961; */
+}
+.card {
+    background-color: #774181;
+    width: 42vh;
+    padding: 40px 30px;
+    border-radius: 20px;
+    color: red;
+}
+
+
+h1 {
+    /* color: #352961; */
+
+}
+
+/* 
+.first-color { 
+	background: #352961; 
+}
+	
+.second-color { 
+	background: #774181; 
+}
+
+.third-color { 
+	background: #e6b2c6; 
+}
+
+.fourth-color { 
+	background: #f6e5e5; 
+} */
+

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Proposal</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: url(./asset/pxfuel1.jpg) no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        #container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #card {
+            margin: 75px;
+            padding: 40px 30px;
+            border-radius: 20px;
+            width: 30vw;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* background: linear-gradient(135deg, #f06490, #6962ff); */
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, .2);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+        #heart {
+            font-size: 3em;
+            color: #ff4d6b;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        #buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #yesButton {
+            /* background-color: #FEC160; */
+            color: white;
+        }
+
+        #noButton {
+            /* background-color: #ff4d6b; */
+            color: white;
+        }
+
+        #confetti-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        .confetti {
+            width: 10px;
+            height: 10px;
+            background-color: #e44d26;
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.8;
+            transform-origin: 0 0;
+            animation: confettiFall 2s ease-out infinite;
+        }
+                
+        .btn-container {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        }
+
+        .btn {
+        font-weight: 600;
+        transition: all 300ms ease;
+        padding: 1rem;
+        width: 8rem;
+        border-radius: 2rem;
+        }
+
+        .btn-color-1,
+        .btn-color-2 {
+        border: rgb(53, 53, 53) 0.1rem solid;
+        }
+
+        .btn-color-1:hover,
+        .btn-color-2:hover {
+        cursor: pointer;
+        }
+
+        .btn-color-1,
+        .btn-color-2:hover {
+        background: #ff2600;
+        color: var(--primary-color);
+        }
+
+        .btn-color-1:hover {
+        background: var(--primary-color);
+        color: #FEC160;
+        }
+
+        .btn-color-2 {
+        background: none;
+        }
+
+        .btn-color-2:hover {
+        border: #FEC160 0.1rem solid;
+        }
+
+        .btn-container {
+        gap: 1rem;
+        }
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes floatRing {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            p {
+                font-size: 1.2em;
+            }
+
+            #heart {
+                font-size: 4em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="card">
+            <div id="ring"></div>
+            <h1>Will You Marry Me?</h1>
+            <p>Dear Akriti,</p>
+            <p>On this special day, surrounded by love and joy, I want to ask you the most important question of my life. Will you make me the happiest person in the world and marry me?</p>
+            <p id="heart">❤️</p>
+            <div id="buttons">
+                <button class="btn btn-color-2" id="yesButton" onclick="celebrate('Yes, I\'d love to!')">Yes</button>
+                <button class="btn btn-color-1" id="noButton" onclick="hideNoButton()">No</button>
+            </div>           
+        </div>
+    </div>
+
+    <div id="confetti-container"></div>
+
+    <script>
+        function celebrate(message) {
+            alert(message);
+            generateConfetti();
+            // You can add additional actions here if needed
+        }
+
+        function hideNoButton() {
+            document.getElementById('noButton').style.display = 'none';
+        }
+
+        function generateConfetti() {
+            const confettiContainer = document.getElementById('confetti-container');
+
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.animationDuration = (Math.random() + 1) + 's';
+                confettiContainer.appendChild(confetti);
+            }
+        }
+    </script>
+</body>
+
+</html>
